@@ -18,6 +18,15 @@ interface QuartoData {
 
 export const Quarto: React.FC = () => {
 
+  const formatDate = (dateString: Date) => {
+    const date = dateString;
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    
+    return `${year}-${month}-${day}`;
+};
+
     const notify = () => toast.success('Solicitação enviada!', { autoClose: 2000, position: 'bottom-right' });
 
     const { idUsuario } = useAuthContext();
@@ -38,20 +47,20 @@ export const Quarto: React.FC = () => {
 
   const reservarQuarto = () => {
     Api.post('/reserva/', {
-        data_out: data_out,
-        data_in: data_in,
+        data_out: formatDate(data_out),
+        data_in: formatDate(data_in),
         id_cliente: idUsuario,
         id_funcionario: null,
         id_quarto: quarto,
     })
       .then(response => {
         console.log(response)
+        notify()
       })
       .catch(error => {
         console.error('Erro ao enviar a solicitação:', error);
     });
     setVisivelModal(false)
-    notify()
   }
 
   const carregarDisponibilidades = () => {
