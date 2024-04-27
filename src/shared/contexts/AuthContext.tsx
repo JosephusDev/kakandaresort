@@ -38,6 +38,7 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
     const navigate = useNavigate();
 
     const handleLogin = useCallback(async (usuario: string, senha: string) => {
+        setTerminado(true)
         try {
             const response = await Api.post('/usuarios/logar', {
                 usuario: usuario,
@@ -50,14 +51,15 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
                 setIdUsuario(0)
                 console.error('Usuário não encontrado ou erro na resposta do servidor');
             }
+            setTerminado(false)
         } catch (error) {
             setIdUsuario(0)
             console.error(error);
         }
-        setTerminado(true)
     }, []);
 
     const handleCriarConta = useCallback(async (nome: string, usuario: string, senha: string, telefone: string) => {
+        setTerminado(true)
         try {
             await Api.post('/usuarios/criar', {
                 nome: nome,
@@ -68,6 +70,7 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
             .then(()=>{
                 setIsCriarConta(false)
                 setContaCriada(true)
+                setTerminado(false)
             })
             .catch(()=>{
                 console.error('Erro ao cadastrar')
@@ -76,7 +79,6 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
             setIdUsuario(0)
             console.error(error);
         }
-        setTerminado(true)
     }, []);
 
     const handleLogout = useCallback(() => {

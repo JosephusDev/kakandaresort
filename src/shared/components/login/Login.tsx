@@ -41,6 +41,12 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         }
     }
 
+    const Carregando = () => {
+        return(
+            <CircularProgress color="inherit" size={14}/>
+        )
+    }
+
     const notify = () => toast.error('Utilizador não encontrado!', { autoClose: 2000, position: 'bottom-right' });
     const notifyContaCriada = () => toast.success('Conta criada com sucesso!', { autoClose: 2000, position: 'bottom-right' });
     const notifyPreencherCampos = () => toast.error('Preencha todos os campos!', { autoClose: 2000, position: 'bottom-right' });
@@ -134,7 +140,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     style={{ width: isSmallScreen ? "40%" : isMediumScreen ? "60%" : "30%" }}
                     >
                         {
-                            terminado ? (<CircularProgress/>) : 'Criar'
+                            terminado ? (<Carregando/>) : 'Criar'
                         }
                     </Button>
                 </Box>
@@ -201,7 +207,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         style={{ width: isSmallScreen ? "40%" : isMediumScreen ? "60%" : "30%" }}
                     >
                         {
-                            terminado ? (<CircularProgress/>) : 'Entrar'
+                            terminado ? (<Carregando/>) : 'Entrar'
                         }
                     </Button>
                 </Box>
