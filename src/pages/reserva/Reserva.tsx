@@ -66,7 +66,7 @@ export const Reserva: React.FC = () => {
 
   useEffect(() => {
     carregarReservas()
-  }, []);
+  }, [reservas]);
 
   return (
     <LayoutBaseDePagina
