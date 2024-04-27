@@ -33,16 +33,13 @@ export const Reserva: React.FC = () => {
     }
 
     const formatDate = (dateString: string) => {
-      const [year, month, day] = dateString.split('-');
-      // Note que estamos subtraindo 1 do mês, pois os meses em JavaScript começam do zero (janeiro é 0)
-      const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-      const formattedDay = date.getDate().toString().padStart(2, '0');
-      const formattedMonth = (date.getMonth() + 1).toString().padStart(2, '0');
-      const formattedYear = date.getFullYear();
-      
-      return `${formattedDay}/${formattedMonth}/${formattedYear}`;
-  };
-  
+        const date = new Date(dateString);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        
+        return `${day}/${month}/${year}`;
+    };
 
     const elimReserva = () => {
         Api.delete(`/reserva/${reserva}`)
