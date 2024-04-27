@@ -121,7 +121,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         disableElevation
                         startIcon={<Icon>login</Icon>}
                         onClick={()=>setIsCriarConta(false)}
-                        style={{ width: isSmallScreen ? "30%" : isMediumScreen ? "60%" : "30%" }}
+                        style={{ width: isSmallScreen ? "35%" : isMediumScreen ? "60%" : "25%" }}
                     >
                         Entrar
                     </Button>&nbsp;&nbsp;
@@ -137,7 +137,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         setTelefone("");
                         handleCriarConta(nome.trim(), utilizador.trim(), senha.trim(), telefone.trim());
                     }}
-                    style={{ width: isSmallScreen ? "30%" : isMediumScreen ? "60%" : "30%" }}
+                    style={{ width: isSmallScreen ? "35%" : isMediumScreen ? "60%" : "25%" }}
                     >
                         {
                             terminado ? (<Carregando/>) : 'Criar'
@@ -194,7 +194,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     disableElevation
                     startIcon={<Icon>person_add</Icon>}
                     onClick={()=>setIsCriarConta(true)}
-                    style={{ width: isSmallScreen ? "30%" : isMediumScreen ? "60%" : "30%" }}
+                    style={{ width: isSmallScreen ? "35%" : isMediumScreen ? "60%" : "25%" }}
                     >
                         Criar
                     </Button>&nbsp;&nbsp;
@@ -204,7 +204,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         disableElevation
                         startIcon={terminado ? null : <Icon>login</Icon>}
                         onClick={fazerLogin}
-                        style={{ width: isSmallScreen ? "30%" : isMediumScreen ? "60%" : "30%" }}
+                        style={{ width: isSmallScreen ? "35%" : isMediumScreen ? "60%" : "25%" }}
                     >
                         {
                             terminado ? (<Carregando/>) : 'Entrar'
