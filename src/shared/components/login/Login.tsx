@@ -129,7 +129,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     variant="contained"
                     color="primary"
                     disableElevation
-                    startIcon={<Icon>person_add</Icon>}
+                    startIcon={terminado ? null : <Icon>person_add</Icon>}
                     onClick={() => {
                         setNome("");
                         setUtilizador("");
@@ -202,7 +202,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         variant="contained"
                         color="primary"
                         disableElevation
-                        startIcon={<Icon>login</Icon>}
+                        startIcon={terminado ? null : <Icon>login</Icon>}
                         onClick={fazerLogin}
                         style={{ width: isSmallScreen ? "30%" : isMediumScreen ? "60%" : "30%" }}
                     >
