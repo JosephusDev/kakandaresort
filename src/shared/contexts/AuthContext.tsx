@@ -55,6 +55,7 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
         } catch (error) {
             setIdUsuario(0)
             console.error(error);
+            setTerminado(false)
         }
     }, []);
 
@@ -78,6 +79,7 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
         } catch (error) {
             setIdUsuario(0)
             console.error(error);
+            setTerminado(false)
         }
     }, []);
 
