@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Avatar, Box, Button, Icon, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Avatar, Box, Button, CircularProgress, Icon, TextField, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { useAuthContext } from '../../contexts';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -13,7 +13,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [senha, setSenha] = useState('');
     const [telefone, setTelefone] = useState('');
 
-    const { isAuthenticated, handleLogin, handleCriarConta, idUsuario, setIdUsuario, isCriarConta, setIsCriarConta, contaCriada, setContaCriada } = useAuthContext();
+    const { isAuthenticated, handleLogin, handleCriarConta, idUsuario, setIdUsuario, isCriarConta, setIsCriarConta, contaCriada, setContaCriada, terminado } = useAuthContext();
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -76,6 +76,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     style={{ marginBottom: 25, width: isSmallScreen ? '80%' : isMediumScreen ? '60%' : '60%' }}
                     value={nome}
                     onChange={(e) => setNome(e.target.value)}
+                    disabled={terminado}
                 />
                 <TextField
                     type='text'
@@ -85,6 +86,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     style={{ marginBottom: 25, width: isSmallScreen ? '80%' : isMediumScreen ? '60%' : '60%' }}
                     value={utilizador}
                     onChange={(e) => setUtilizador(e.target.value)}
+                    disabled={terminado}
                 />
                 <TextField
                     type='password'
@@ -94,6 +96,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     style={{ marginBottom: 25, width: isSmallScreen ? '80%' : isMediumScreen ? '60%' : '60%' }}
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
+                    disabled={terminado}
                 />
                 <TextField
                     type='number'
@@ -103,6 +106,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     style={{ marginBottom: 25, width: isSmallScreen ? '80%' : isMediumScreen ? '60%' : '60%' }}
                     value={telefone}
                     onChange={(e) => setTelefone(e.target.value)}
+                    disabled={terminado}
                 />
                 <Box display="flex" justifyContent="center" width="100%">
                     <Button
@@ -129,7 +133,9 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     }}
                     style={{ width: isSmallScreen ? "40%" : isMediumScreen ? "60%" : "30%" }}
                     >
-                        Criar
+                        {
+                            terminado ? (<CircularProgress/>) : 'Criar'
+                        }
                     </Button>
                 </Box>
             </Box>
@@ -163,6 +169,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     style={{ marginBottom: 25, width: isSmallScreen ? '80%' : isMediumScreen ? '60%' : '60%' }}
                     value={utilizador}
                     onChange={(e) => setUtilizador(e.target.value)}
+                    disabled={terminado}
                 />
                 <TextField
                     type='password'
@@ -172,6 +179,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     style={{ marginBottom: 25, width: isSmallScreen ? '80%' : isMediumScreen ? '60%' : '60%' }}
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
+                    disabled={terminado}
                 />
                 <Box display="flex" justifyContent="center" width="100%">
                     <Button
@@ -192,7 +200,9 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         onClick={fazerLogin}
                         style={{ width: isSmallScreen ? "40%" : isMediumScreen ? "60%" : "30%" }}
                     >
-                        Entrar
+                        {
+                            terminado ? (<CircularProgress/>) : 'Entrar'
+                        }
                     </Button>
                 </Box>
             </Box>

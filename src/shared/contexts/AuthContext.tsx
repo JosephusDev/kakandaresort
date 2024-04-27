@@ -7,6 +7,7 @@ interface AuthContextData {
     isAuthenticated: boolean;
     isCriarConta: boolean;
     contaCriada: boolean;
+    terminado: boolean;
     handleLogin: (usuario: string, senha: string) => Promise<void>;
     handleCriarConta: (nome: string, usuario: string, senha: string, telefone: string) => Promise<void>;
     handleLogout: () => void;
@@ -32,6 +33,7 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isCriarConta, setIsCriarConta] = useState(false);
     const [contaCriada, setContaCriada] = useState(false);
+    const [terminado, setTerminado] = useState(false);
     const [idUsuario, setIdUsuario] = useState(-1)
     const navigate = useNavigate();
 
@@ -52,6 +54,7 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
             setIdUsuario(0)
             console.error(error);
         }
+        setTerminado(true)
     }, []);
 
     const handleCriarConta = useCallback(async (nome: string, usuario: string, senha: string, telefone: string) => {
@@ -73,6 +76,7 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
             setIdUsuario(0)
             console.error(error);
         }
+        setTerminado(true)
     }, []);
 
     const handleLogout = useCallback(() => {
@@ -82,7 +86,7 @@ export const Auth: React.FC<MyAuthProps> = ({ children }) => {
     }, [navigate]);
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, isCriarConta, setIsCriarConta, handleLogin, handleLogout, idUsuario, setIdUsuario, handleCriarConta, contaCriada, setContaCriada }}>
+        <AuthContext.Provider value={{ isAuthenticated, isCriarConta, setIsCriarConta, handleLogin, handleLogout, idUsuario, setIdUsuario, handleCriarConta, contaCriada, setContaCriada, terminado }}>
             {children}
         </AuthContext.Provider>
     );
