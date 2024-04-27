@@ -121,7 +121,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         disableElevation
                         startIcon={<Icon>login</Icon>}
                         onClick={()=>setIsCriarConta(false)}
-                        style={{ width: isSmallScreen ? "40%" : isMediumScreen ? "60%" : "30%" }}
+                        style={{ width: isSmallScreen ? "30%" : isMediumScreen ? "60%" : "30%" }}
                     >
                         Entrar
                     </Button>&nbsp;&nbsp;
@@ -137,7 +137,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         setTelefone("");
                         handleCriarConta(nome.trim(), utilizador.trim(), senha.trim(), telefone.trim());
                     }}
-                    style={{ width: isSmallScreen ? "40%" : isMediumScreen ? "60%" : "30%" }}
+                    style={{ width: isSmallScreen ? "30%" : isMediumScreen ? "60%" : "30%" }}
                     >
                         {
                             terminado ? (<Carregando/>) : 'Criar'
