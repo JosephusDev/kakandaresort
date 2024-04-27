@@ -194,7 +194,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     disableElevation
                     startIcon={<Icon>person_add</Icon>}
                     onClick={()=>setIsCriarConta(true)}
-                    style={{ width: isSmallScreen ? "40%" : isMediumScreen ? "60%" : "30%" }}
+                    style={{ width: isSmallScreen ? "30%" : isMediumScreen ? "60%" : "30%" }}
                     >
                         Criar
                     </Button>&nbsp;&nbsp;
@@ -204,7 +204,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         disableElevation
                         startIcon={<Icon>login</Icon>}
                         onClick={fazerLogin}
-                        style={{ width: isSmallScreen ? "40%" : isMediumScreen ? "60%" : "30%" }}
+                        style={{ width: isSmallScreen ? "30%" : isMediumScreen ? "60%" : "30%" }}
                     >
                         {
                             terminado ? (<Carregando/>) : 'Entrar'
