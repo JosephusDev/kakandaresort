@@ -73,6 +73,7 @@ export const Quarto: React.FC = () => {
       }).then(response => {
         const quartosData = response.data[0];
         setQuartos(quartosData);
+        console.log(response.data)
         console.log(quartosData)
         setIsLoading(false)
       })
