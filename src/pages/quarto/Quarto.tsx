@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Icon, IconButton, TableFooter, LinearProgress, Button, TextField } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Icon, IconButton, TableFooter, LinearProgress, Button, TextField, Typography } from '@mui/material';
 import {MyModalAgendar} from '../../shared/components/modal/ModalAgendar';
 import { FerramentasDaListagem } from '../../shared/components';
 import { LayoutBaseDePagina } from '../../shared/layouts';
@@ -131,7 +131,7 @@ export const Quarto: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {quartos.length > 0 ? quartos.map(quarto => (
+              {quartos ? quartos.map(quarto => (
                 <TableRow key={quarto.id}>
                   <TableCell><IconButton onClick={()=>abrirModal(Number(quarto.id))} color='primary'><Icon>send</Icon></IconButton></TableCell>
                   <TableCell>{quarto.numero}</TableCell>
@@ -142,7 +142,7 @@ export const Quarto: React.FC = () => {
                 </TableRow>
               )) : (
                 <TableRow>
-                  <TableCell colSpan={6}>Nenhum resultado encontrado.</TableCell>
+                  <TableCell colSpan={6}><Typography>Nenhum resultado encontrado.</Typography></TableCell>
                 </TableRow>
             )}
             </TableBody>
