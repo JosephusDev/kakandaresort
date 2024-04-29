@@ -17,6 +17,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const navigate = useNavigate();
     
     useEffect(() => {
+        navigate("/");
         if(contaCriada){
             notifyContaCriada()
             setContaCriada(false)
@@ -24,6 +25,7 @@ const Login: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     }, [contaCriada]);
 
     useEffect(() => {
+        navigate("/");
         if (idUsuario === 0) {
             notify();
             setIdUsuario(-1)
