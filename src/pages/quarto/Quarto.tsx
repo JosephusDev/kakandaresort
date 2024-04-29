@@ -97,14 +97,10 @@ export const Quarto: React.FC = () => {
   
 
   useEffect(() => {
-  
-    // Chamar carregarQuartos imediatamente
     carregarQuartos();
-  
-    // Chamar carregarQuartos a cada 1 minuto
+
     const intervalId = setInterval(carregarQuartos, 60000);
   
-    // Limpar o intervalo ao desmontar o componente
     return () => clearInterval(intervalId);
   }, []);
   
