@@ -68,8 +68,8 @@ export const Quarto: React.FC = () => {
   
     try {
       Api.post('/ver_disponibilidade/', {
-        data_in: data1,
-        data_out: data2
+        data_in: formatDate(data1),
+        data_out: formatDate(data2)
       }).then(response => {
         setQuartos(response.data[0]);
         console.log(response.data)
@@ -142,7 +142,7 @@ export const Quarto: React.FC = () => {
                 </TableRow>
               )) : (
                 <TableRow>
-                  <TableCell colSpan={6}><Typography>Nenhum resultado encontrado.</Typography></TableCell>
+                  <TableCell colSpan={6} sx={{textAlign: 'center'}}><Typography>Nenhum resultado encontrado.</Typography></TableCell>
                 </TableRow>
             )}
             </TableBody>
