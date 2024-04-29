@@ -71,10 +71,9 @@ export const Quarto: React.FC = () => {
         data_in: data1,
         data_out: data2
       }).then(response => {
-        const quartosData = response.data[0];
-        setQuartos(quartosData);
+        setQuartos(response.data[0]);
         console.log(response.data)
-        console.log(quartosData)
+        console.log(response.data[0])
         setIsLoading(false)
       })
       .catch(error => {
