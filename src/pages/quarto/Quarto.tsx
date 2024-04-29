@@ -73,6 +73,7 @@ export const Quarto: React.FC = () => {
       }).then(response => {
         const quartosData = response.data[0];
         setQuartos(quartosData);
+        console.log(quartosData)
         setIsLoading(false)
       })
       .catch(error => {
@@ -134,7 +135,7 @@ export const Quarto: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {quartos.map(quarto => (
+              {quartos.length > 0 ? quartos.map(quarto => (
                 <TableRow key={quarto.id}>
                   <TableCell><IconButton onClick={()=>abrirModal(Number(quarto.id))} color='primary'><Icon>send</Icon></IconButton></TableCell>
                   <TableCell>{quarto.numero}</TableCell>
@@ -143,7 +144,11 @@ export const Quarto: React.FC = () => {
                   <TableCell>{quarto.preco}</TableCell>
                   <TableCell>{quarto.estado}</TableCell>
                 </TableRow>
-              ))}
+              )) : (
+                <TableRow>
+                  <TableCell colSpan={6}>Nenhum resultado encontrado.</TableCell>
+                </TableRow>
+            )}
             </TableBody>
             <TableFooter>
                 {isLoading && (
